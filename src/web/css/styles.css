@@ -1,0 +1,13 @@
+.dvizh-seo .toggle {
+    text-decoration: none;
+    border-bottom:2px dotted #337ab7;
+    font-size: 200%;
+}
+
+.dvizh-seo .toggle:hover{
+    text-decoration: none;
+}
+
+.dvizh-seo .hidden {
+    display: none;
+}
