@@ -27,7 +27,7 @@ php composer update
 Миграция:
 
 ```
-php yii migrate --migrationPath=vendor/dvizh/yii2-seo/migrations
+php yii migrate --migrationPath=vendor/dvizh/yii2-seo/src/migrations
 ```
 
 Использование
