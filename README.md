@@ -9,13 +9,13 @@ Yii2-seo
 Выполнить команду
 
 ```
-php composer require dvizh/yii2-seo "*"
+php composer require dvizh/yii2-seo "@dev"
 ```
 
 Или добавить в composer.json
 
 ```
-"dvizh/yii2-seo": "*",
+"dvizh/yii2-seo": "@dev",
 ```
 
 И выполнить
