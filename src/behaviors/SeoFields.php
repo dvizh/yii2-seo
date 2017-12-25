@@ -21,15 +21,17 @@ class SeoFields extends Behavior
 
     public function updateFields($event)
     {
-        $post = Yii::$app->request->post();
-        
-        if (($model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => $this->owner->className() ])) === null) {
-            $model = new Seo;
-        }
-        $post['Seo']['item_id'] = $this->owner->id;
-        
-        $model->load($post);
-        $model->save();
+		if(isset(Yii::$app->request) &&  method_exists(Yii::$app->request, 'post')) {
+			$post = Yii::$app->request->post();
+			
+			if (($model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => $this->owner->className() ])) === null) {
+				$model = new Seo;
+			}
+			$post['Seo']['item_id'] = $this->owner->id;
+			
+			$model->load($post);
+			$model->save();
+		}
     }
     
     public function deleteFields($event)
