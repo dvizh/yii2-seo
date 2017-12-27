@@ -19,12 +19,19 @@ class SeoFields extends Behavior
         ];
     }
 
+	public function getSeoClassName()
+	{
+		$model = explode('\\', $this->owner->className());
+		
+		return end($model);
+	}
+	
     public function updateFields($event)
     {
         if(isset(Yii::$app->request) &&  method_exists(Yii::$app->request, 'post')) {
             $post = Yii::$app->request->post();
             
-            if ($model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => end(explode('\\', $this->owner->className()))]) === null) {
+            if ($model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => $this->getSeoClassName()]) === null) {
                 $model = new Seo;
             }
             
@@ -46,7 +53,7 @@ class SeoFields extends Behavior
     
     public function getSeo()
     {
-        if($model = Seo::find()->where(['item_id' => $this->owner->id, 'modelName' => end(explode('\\', $this->owner->className()))])->one()) {
+        if($model = Seo::find()->where(['item_id' => $this->owner->id, 'modelName' => $this->getSeoClassName()])->one()) {
             return $model;
         } else {
             return new Seo;
