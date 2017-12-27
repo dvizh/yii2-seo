@@ -16,7 +16,7 @@ class SeoForm extends \yii\base\Widget
     public function init()
     {
         if(empty($this->modelName)) {
-            $this->modelName = end(explode('\\', $this->model->className()));
+            $this->modelName = $this->model->getSeoClassName();
         }
         
         \dvizh\seo\assets\FormAsset::register($this->getView());
