@@ -31,7 +31,7 @@ class SeoFields extends Behavior
         if(isset(Yii::$app->request) &&  method_exists(Yii::$app->request, 'post')) {
             $post = Yii::$app->request->post();
             
-            if ($model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => $this->getSeoClassName()]) === null) {
+            if (!$model = Seo::findOne(['item_id' => $this->owner->id, 'modelName' => $this->getSeoClassName()])) {
                 $model = new Seo;
             }
             
